@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Pirate
 // @namespace    https://store.steampowered.com/
-// @version      1.0.0
+// @version      1.0.1
 // @description  A Tampermonkey script that add links to torrents for Steam app page
 // @author       shishkevichd
 // @match        https://store.steampowered.com/app/*
@@ -45,63 +45,48 @@
         }
     ]
 
-    /*
-    <div id="appDetailsUnderlinedLinks" class="block responsive_apppage_details_left game_details underlined_links">
-        <div class="block_content">
-            <div class="block_content_inner">
-                <div id="genresAndManufacturer" class="details_block">
-                    <b>Torrents</b>
-                </div>
-                <div class="details_block" style="padding-top: 14px;">
-                    <a class="linkbar" href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.l4d.com" target="_blank" rel="noreferrer  noopener">
-                    Visit the website <img src="https://store.cloudflare.steamstatic.com/public/images/v5/ico_external_link.gif" border="0" align="bottom">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    */
-
     const gameName = document.getElementById("appHubAppName").textContent.trim().toLowerCase().replace(/'/g, '').replace(/_/g, ' ');
 
-    let app_torrents_links__content = document.createElement("div")
-    app_torrents_links__content.className = "block responsive_apppage_details_left game_details underlined_links"
-    app_torrents_links__content.id = "appTorrentsUnderlinedLinks"
+    if (gameName != null) {
+        let app_torrents_links__content = document.createElement("div")
+        app_torrents_links__content.className = "block responsive_apppage_details_left game_details underlined_links"
+        app_torrents_links__content.id = "appTorrentsUnderlinedLinks"
 
-    let app_torrents_links__blockContent = document.createElement("div")
-    app_torrents_links__blockContent.className = "block_content";
+        let app_torrents_links__blockContent = document.createElement("div")
+        app_torrents_links__blockContent.className = "block_content";
 
-    let app_torrents_links__blockContentInner = document.createElement("div")
-    app_torrents_links__blockContentInner.className = "block_content_inner"
+        let app_torrents_links__blockContentInner = document.createElement("div")
+        app_torrents_links__blockContentInner.className = "block_content_inner"
 
-    let app_torrents_links__detailsBlock = document.createElement("div")
-    app_torrents_links__detailsBlock.className = "details_block"
+        let app_torrents_links__detailsBlock = document.createElement("div")
+        app_torrents_links__detailsBlock.className = "details_block"
 
-    let app_torrents_links__detailsBlockHeader = document.createElement("div")
-    app_torrents_links__detailsBlockHeader.className = "block_header"
-    let app_torrents_links__detailsBlockHeaderH4 = document.createElement("h4")
-    app_torrents_links__detailsBlockHeaderH4.innerText = "Torrents"
-    app_torrents_links__detailsBlockHeader.appendChild(app_torrents_links__detailsBlockHeaderH4)
+        let app_torrents_links__detailsBlockHeader = document.createElement("div")
+        app_torrents_links__detailsBlockHeader.className = "block_header"
+        let app_torrents_links__detailsBlockHeaderH4 = document.createElement("h4")
+        app_torrents_links__detailsBlockHeaderH4.innerText = "Torrents"
+        app_torrents_links__detailsBlockHeader.appendChild(app_torrents_links__detailsBlockHeaderH4)
 
-    app_torrents_links__content.appendChild(app_torrents_links__blockContent)
-    app_torrents_links__blockContent.appendChild(app_torrents_links__blockContentInner)
-    app_torrents_links__blockContentInner.appendChild(app_torrents_links__detailsBlock)
-    app_torrents_links__detailsBlock.appendChild(app_torrents_links__detailsBlockHeader)
+        app_torrents_links__content.appendChild(app_torrents_links__blockContent)
+        app_torrents_links__blockContent.appendChild(app_torrents_links__blockContentInner)
+        app_torrents_links__blockContentInner.appendChild(app_torrents_links__detailsBlock)
+        app_torrents_links__detailsBlock.appendChild(app_torrents_links__detailsBlockHeader)
 
-    searchProviders.forEach((provider) => {
-        let torrent_link = document.createElement("a")
-        torrent_link.className = "linkbar"
-        torrent_link.href = provider.url.replace("#game#", gameName)
-        torrent_link.target = "_blank"
-        torrent_link.rel = "noreferrer noopener"
-        torrent_link.innerHTML = `<img src="https://www.google.com/s2/favicons?sz=64&domain=${new URL(provider.url).hostname}" style="width: 16px; height: 16px;"> ${provider.title} <img src="https://store.cloudflare.steamstatic.com/public/images/v5/ico_external_link.gif" border="0" align="bottom">`
+        searchProviders.forEach((provider) => {
+            let torrent_link = document.createElement("a")
+            torrent_link.className = "linkbar"
+            torrent_link.href = provider.url.replace("#game#", gameName)
+            torrent_link.target = "_blank"
+            torrent_link.rel = "noreferrer noopener"
+            torrent_link.innerHTML = `<img src="https://www.google.com/s2/favicons?sz=64&domain=${new URL(provider.url).hostname}" style="width: 16px; height: 16px;"> ${provider.title} <img src="https://store.cloudflare.steamstatic.com/public/images/v5/ico_external_link.gif" border="0" align="bottom">`
 
-        app_torrents_links__detailsBlock.append(
-            torrent_link
-        )
-    })
+            app_torrents_links__detailsBlock.append(
+                torrent_link
+            )
+        })
 
-    let game_meta_data_column = document.querySelectorAll("div.rightcol.game_meta_data")[0]
+        let game_meta_data_column = document.querySelectorAll("div.rightcol.game_meta_data")[0]
 
-    game_meta_data_column.prepend(app_torrents_links__content)
+        game_meta_data_column.prepend(app_torrents_links__content)
+    }
 })();
