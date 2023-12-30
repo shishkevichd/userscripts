@@ -1,6 +1,6 @@
 # steam-torrents
 
-[Install script](https://github.com/shishkevichd/steam-torrents/raw/master/steamPirate.user.js)
+[Install script (Tampermonkey)](https://github.com/shishkevichd/steam-torrents/raw/master/steamPirate.user.js)
 
 A Tampermonkey script that add links to torrents for Steam app page
 
