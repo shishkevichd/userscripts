@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Pirate
 // @namespace    https://store.steampowered.com/
-// @version      1.0.5
+// @version      1.0.6
 // @description  A Tampermonkey script that add links to torrents for Steam app page
 // @author       shishkevichd
 // @match        https://store.steampowered.com/app/*
@@ -51,7 +51,7 @@
     ]
 
     if (document.getElementById("appHubAppName") != null) {
-        const gameName = document.getElementById("appHubAppName").textContent.trim().toLowerCase().replace(/'/g, '').replace(/_/g, ' ');
+        const gameName = encodeURI(document.getElementById("appHubAppName").textContent.trim().toLowerCase().replace(/'/g, '').replace(/_/g, ' '));
 
         let app_torrents_links__content = document.createElement("div")
         app_torrents_links__content.className = "block responsive_apppage_details_left game_details underlined_links"
