@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Pirate
 // @namespace    https://store.steampowered.com/
-// @version      1.0.4
+// @version      1.0.5
 // @description  A Tampermonkey script that add links to torrents for Steam app page
 // @author       shishkevichd
 // @match        https://store.steampowered.com/app/*
@@ -15,6 +15,15 @@
     'use strict';
 
     const searchProviders = [
+        {
+            title: "RuTracker",
+            favicon: "rutracker-net.ru",
+            url: "https://rutracker.org/forum/tracker.php?nm=#game#"
+        },
+        {
+            title: "Steam Repacks",
+            url: "https://steam-repacks.com/?s=#game#&post_type=post"
+        },
         {
             title: "Online Fix",
             url: "https://online-fix.me/index.php?do=search&subaction=search&story=#game#"
@@ -38,15 +47,6 @@
         {
             title: "Gload",
             url: "https://gload.to/?s=#game#"
-        },
-        {
-            title: "Steam Repacks",
-            url: "https://steam-repacks.com/?s=#game#&post_type=post"
-        },
-        {
-            title: "RuTracker",
-            favicon: "rutracker-net.ru",
-            url: "https://rutracker.org/forum/tracker.php?nm=#game#"
         }
     ]
 
