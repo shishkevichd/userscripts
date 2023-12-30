@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Pirate
 // @namespace    https://store.steampowered.com/
-// @version      1.0.3
+// @version      1.0.4
 // @description  A Tampermonkey script that add links to torrents for Steam app page
 // @author       shishkevichd
 // @match        https://store.steampowered.com/app/*
@@ -45,6 +45,7 @@
         },
         {
             title: "RuTracker",
+            favicon: "rutracker-net.ru",
             url: "https://rutracker.org/forum/tracker.php?nm=#game#"
         }
     ]
@@ -82,7 +83,7 @@
             torrent_link.href = provider.url.replace("#game#", gameName)
             torrent_link.target = "_blank"
             torrent_link.rel = "noreferrer noopener"
-            torrent_link.innerHTML = `<img src="https://www.google.com/s2/favicons?sz=64&domain=${new URL(provider.url).hostname}" style="width: 16px; height: 16px;"> ${provider.title} <img src="https://store.cloudflare.steamstatic.com/public/images/v5/ico_external_link.gif" border="0" align="bottom">`
+            torrent_link.innerHTML = `<img src="https://www.google.com/s2/favicons?sz=64&domain=${provider.favicon ? provider.favicon : (new URL(provider.url).hostname)}" style="width: 16px; height: 16px;"> ${provider.title} <img src="https://store.cloudflare.steamstatic.com/public/images/v5/ico_external_link.gif" border="0" align="bottom">`
 
             app_torrents_links__detailsBlock.append(
                 torrent_link
