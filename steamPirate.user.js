@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Pirate
 // @namespace    https://store.steampowered.com/
-// @version      1.0.2
+// @version      1.0.3
 // @description  A Tampermonkey script that add links to torrents for Steam app page
 // @author       shishkevichd
 // @match        https://store.steampowered.com/app/*
@@ -42,6 +42,10 @@
         {
             title: "Steam Repacks",
             url: "https://steam-repacks.com/?s=#game#&post_type=post"
+        },
+        {
+            title: "RuTracker",
+            url: "https://rutracker.org/forum/tracker.php?nm=#game#"
         }
     ]
 
