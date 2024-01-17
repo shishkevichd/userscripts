@@ -6,8 +6,8 @@
 // @author       shishkevichd
 // @match        https://store.steampowered.com/app/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=store.steampowered.com
-// @downloadURL  https://raw.githubusercontent.com/shishkevichd/steam-torrents/master/steamPirate.user.js
-// @updateURL    https://raw.githubusercontent.com/shishkevichd/steam-torrents/master/steamPirate.user.js
+// @downloadURL  https://raw.githubusercontent.com/shishkevichd/steam-torrents/master/scripts/steam-torrents/steamPirate.user.js
+// @updateURL    https://raw.githubusercontent.com/shishkevichd/steam-torrents/master/scripts/steam-torrents/steamPirate.user.js
 // @grant        none
 // ==/UserScript==
 
