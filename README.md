@@ -1,18 +1,7 @@
-# steam-torrents
+# User scripts
 
-[Install script (Tampermonkey)](https://github.com/shishkevichd/steam-torrents/raw/master/steamPirate.user.js)
+Collection of self-written user scripts
 
-A Tampermonkey script that add links to torrents for Steam app page
-
-![Screenshot](./images/screenshot.png)
-
-## Supported sites
-
-- RuTracker
-- Steam Repacks
-- Online Fix
-- Skidrow
-- FitGirl
-- SteamRIP
-- Dodi
-- Gload
+| Script | Description |
+|---|---|
+| [steam-torrents](https://github.com/shishkevichd/userscripts/tree/master/scripts/steam-torrents) | A script that add links to torrents for Steam app page |
